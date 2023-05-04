@@ -5,6 +5,7 @@ import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Alert from "@mui/material/Alert";
 import { Link } from "react-router-dom";
+import Helpers from "../../Components/Helpers";
 
 const Login = () => {
   const [emailError, setEmailError] = useState(false);
@@ -15,27 +16,18 @@ const Login = () => {
 
   const [onAlert, setAlert] = useState(false);
 
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const helper = new Helpers();
+
   const handleSubmit = () => {
-    if (emailValue === "" || passwordValue === "") {
-      setAlert(true);
-    } else {
-      setAlert(false);
-    }
-
-    if (emailValue === "") {
-      setEmailError(true);
-    } else {
-      setEmailError(false);
-    }
-
-    if (passwordValue === "") {
-      setPasswordError(true);
-    } else {
-      setPasswordError(false);
-    }
+    helper.checker(emailValue === "" || passwordValue === "", setAlert);
+    helper.checker(emailValue === "", setEmailError);
+    helper.checker(passwordValue === "", setPasswordError);
 
     if (emailValue && passwordValue) {
       alert("Ready to login");
+      setLoggedIn(true);
     }
   };
 
@@ -51,42 +43,46 @@ const Login = () => {
     }
   };
 
-  return (
-    <div>
-      <Header />
-      <h2>Login</h2>
-      <Box component="form" noValidate autoComplete="off">
-        <div>{handleAlert()}</div>
-        <div>
-          <TextField
-            error={emailError}
-            onChange={(event) => setEmailValue(event.target.value)}
-            id="outlined-basic"
-            label="Email"
-            variant="outlined"
-          />
-        </div>
-        <div>
-          <TextField
-            error={passwordError}
-            onChange={(event) => setPasswordValue(event.target.value)}
-            id="outlined-basic"
-            label="Password"
-            type="password"
-            variant="outlined"
-          />
-        </div>
-        <div>
-          <Button onClick={handleSubmit} variant="contained">
-            Login
-          </Button>
-        </div>
-        <div>
-          Don't have an account? <Link to="/register">Register</Link>
-        </div>
-      </Box>
-    </div>
-  );
+  if (!loggedIn) {
+    return (
+      <div>
+        <Header />
+        <h2>Login</h2>
+        <Box component="form" noValidate autoComplete="off">
+          <div>{handleAlert()}</div>
+          <div>
+            <TextField
+              error={emailError}
+              onChange={(event) => setEmailValue(event.target.value)}
+              id="outlined-basic"
+              label="Email"
+              variant="outlined"
+            />
+          </div>
+          <div>
+            <TextField
+              error={passwordError}
+              onChange={(event) => setPasswordValue(event.target.value)}
+              id="outlined-basic"
+              label="Password"
+              type="password"
+              variant="outlined"
+            />
+          </div>
+          <div>
+            <Button onClick={handleSubmit} variant="contained">
+              Login
+            </Button>
+          </div>
+          <div>
+            Don't have an account? <Link to="/register">Register</Link>
+          </div>
+        </Box>
+      </div>
+    );
+  } else {
+    return <div>Dashboard</div>;
+  }
 };
 
 export default Login;
