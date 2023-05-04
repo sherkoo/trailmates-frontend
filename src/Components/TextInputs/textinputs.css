@@ -1,0 +1,9 @@
+.text-fullwidth{
+  width: 100%;
+  display: block;
+}
+
+.text-input{
+  display: block;
+  margin-bottom: 1em;
+}
