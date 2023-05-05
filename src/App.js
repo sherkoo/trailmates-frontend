@@ -5,18 +5,19 @@ import NotFound from "./Pages/NotFound";
 import Registration from "./Pages/Registration";
 import Dashboard from "./Pages/Dashboard";
 import { useSelector } from "react-redux";
-import { Pageview } from "@mui/icons-material";
 
+// protect routes
 const ProtectedRoute = ({ user, children }) => {
   const loggedIn = useSelector((state) => state.user.loggedIn);
 
   if (!loggedIn) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to={"/login"} replace />;
   }
 
   return children;
 };
 
+// if user is logged in
 const LoggedInRoute = ({ user, children, page }) => {
   const loggedIn = useSelector((state) => state.user.loggedIn);
 
@@ -27,6 +28,7 @@ const LoggedInRoute = ({ user, children, page }) => {
   return children;
 };
 
+// app
 function App() {
   return (
     <div className="App">
