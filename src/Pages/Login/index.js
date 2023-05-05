@@ -7,8 +7,11 @@ import Alert from "@mui/material/Alert";
 import { Link } from "react-router-dom";
 import Helpers from "../../Components/Helpers";
 import vars from "../../Components/vars";
+import { useSelector } from "react-redux";
 
 const Login = () => {
+  const state = useSelector((state) => state.counter);
+
   const [emailError, setEmailError] = useState(false);
   const [emailValue, setEmailValue] = useState("");
 
@@ -47,6 +50,9 @@ const Login = () => {
   if (!loggedIn) {
     return (
       <div>
+        <h1>{state.userData.name}</h1>
+        <h1>{state.userData.age}</h1>
+        <h1>{state.userData.email}</h1>
         <Header />
         <h2>Login</h2>
         <Box component="form" noValidate autoComplete="off">
