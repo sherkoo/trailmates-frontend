@@ -6,6 +6,7 @@ import Box from "@mui/material/Box";
 import Alert from "@mui/material/Alert";
 import { Link } from "react-router-dom";
 import Helpers from "../../Components/Helpers";
+import vars from "../../Components/vars";
 
 const Login = () => {
   const [emailError, setEmailError] = useState(false);
@@ -20,7 +21,7 @@ const Login = () => {
 
   const helper = new Helpers();
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
     helper.checker(emailValue === "" || passwordValue === "", setAlert);
     helper.checker(emailValue === "", setEmailError);
     helper.checker(passwordValue === "", setPasswordError);
@@ -35,7 +36,7 @@ const Login = () => {
     if (onAlert) {
       return (
         <Alert severity="error">
-          All fields required. Fill in the following fields:
+          {vars.messages.login}
           {emailError ? <li>Email</li> : null}
           {passwordError ? <li>Password</li> : null}
         </Alert>

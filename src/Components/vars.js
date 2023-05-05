@@ -1,4 +1,7 @@
 const vars = {
+  messages: {
+    login: "All fields required. Fill in the following fields:",
+  },
   colors: {
     greens: {
       green1: "#77dd77",
