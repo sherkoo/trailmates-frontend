@@ -19,12 +19,12 @@ const Registration = () => {
 
   const [onAlert, setAlert] = useState(false);
 
-  const [loggedIn, setLoggedIn] = useState(false);
+  // const [loggedIn, setLoggedIn] = useState(false);
 
   const helper = new Helpers();
 
   useEffect(() => {
-    setLoggedIn(true);
+    // setLoggedIn(true);
   }, []);
 
   const handleSubmit = (event) => {
@@ -43,7 +43,7 @@ const Registration = () => {
         password2: password2Value,
       };
       console.log(credentials);
-      setLoggedIn(true);
+      // setLoggedIn(true);
     }
   };
 
@@ -59,54 +59,50 @@ const Registration = () => {
     }
   };
 
-  if (!loggedIn) {
-    return (
+  return (
+    <div>
+      <Header />
+      <h2>Register</h2>
+      <div>{handleAlert()}</div>
       <div>
-        <Header />
-        <h2>Register</h2>
-        <div>{handleAlert()}</div>
-        <div>
-          <TextField
-            error={emailError}
-            onChange={(event) => setEmailValue(event.target.value)}
-            id="outlined-basic"
-            label="Email"
-            variant="outlined"
-          />
-        </div>
-        <div>
-          <TextField
-            error={password1Error}
-            type="password"
-            onChange={(event) => setPassword1Value(event.target.value)}
-            id="outlined-basic"
-            label="Password"
-            variant="outlined"
-          />
-        </div>
-        <div>
-          <TextField
-            type="password"
-            error={password2Error}
-            onChange={(event) => setPassword2Value(event.target.value)}
-            id="outlined-basic"
-            label="Repeat Password"
-            variant="outlined"
-          />
-        </div>
-        <div>
-          <Button onClick={handleSubmit} variant="contained">
-            Register
-          </Button>
-        </div>
-        <div>
-          Already have an account? <Link to="/login">Login</Link>
-        </div>
+        <TextField
+          error={emailError}
+          onChange={(event) => setEmailValue(event.target.value)}
+          id="outlined-basic"
+          label="Email"
+          variant="outlined"
+        />
       </div>
-    );
-  } else {
-    return <Navigate to="/dashboard" />;
-  }
+      <div>
+        <TextField
+          error={password1Error}
+          type="password"
+          onChange={(event) => setPassword1Value(event.target.value)}
+          id="outlined-basic"
+          label="Password"
+          variant="outlined"
+        />
+      </div>
+      <div>
+        <TextField
+          type="password"
+          error={password2Error}
+          onChange={(event) => setPassword2Value(event.target.value)}
+          id="outlined-basic"
+          label="Repeat Password"
+          variant="outlined"
+        />
+      </div>
+      <div>
+        <Button onClick={handleSubmit} variant="contained">
+          Register
+        </Button>
+      </div>
+      <div>
+        Already have an account? <Link to="/login">Login</Link>
+      </div>
+    </div>
+  );
 };
 
 export default Registration;

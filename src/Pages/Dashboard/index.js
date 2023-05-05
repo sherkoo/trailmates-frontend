@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "../../Components/Buttons";
 import Header from "../../Components/Header";
 
 const Dashboard = () => {

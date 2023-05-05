@@ -10,7 +10,7 @@ import vars from "../../Components/vars";
 import { useSelector } from "react-redux";
 
 const Login = () => {
-  const state = useSelector((state) => state.counter);
+  const userRedux = useSelector((state) => state.user);
 
   const [emailError, setEmailError] = useState(false);
   const [emailValue, setEmailValue] = useState("");
@@ -50,9 +50,9 @@ const Login = () => {
   if (!loggedIn) {
     return (
       <div>
-        <h1>{state.userData.name}</h1>
-        <h1>{state.userData.age}</h1>
-        <h1>{state.userData.email}</h1>
+        <h1>{userRedux.userData.name}</h1>
+        <h1>{userRedux.userData.age}</h1>
+        <h1>{userRedux.userData.email}</h1>
         <Header />
         <h2>Login</h2>
         <Box component="form" noValidate autoComplete="off">
