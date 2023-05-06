@@ -9,6 +9,7 @@ import Messages from "./Pages/Messages";
 import Search from "./Pages/Search";
 import Settings from "./Pages/Settings";
 import Newsfeed from "./Pages/Newsfeed";
+import Events from "./Pages/Events";
 
 // protect routes
 const ProtectedRoute = ({ user, children }) => {
@@ -80,6 +81,16 @@ function App() {
               <ProtectedRoute>
                 <Dashboard>
                   <Messages />
+                </Dashboard>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/events"
+            element={
+              <ProtectedRoute>
+                <Dashboard>
+                  <Events />
                 </Dashboard>
               </ProtectedRoute>
             }

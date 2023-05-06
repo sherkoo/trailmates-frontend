@@ -1,13 +1,13 @@
 import React from "react";
 import PageHeader from "../../Components/PageHeader";
 
-const Messages = () => {
+const Events = () => {
   return (
     <div>
-      <PageHeader title="Messages" />
-      <p>messages go here</p>
+      <PageHeader title="Events" />
+      events page here
     </div>
   );
 };
 
-export default Messages;
+export default Events;
