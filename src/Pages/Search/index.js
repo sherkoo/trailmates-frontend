@@ -1,18 +1,17 @@
 import React from "react";
+import Header from "../../Components/Header";
 import { useSelector } from "react-redux";
 import PageHeader from "../../Components/PageHeader";
 
-const Settings = () => {
+const Dashboard = () => {
   const user = useSelector((state) => state.user.userData);
 
   return (
     <div>
-      <PageHeader title="Settings" />
-      <h3>{user.email}</h3>
-      <h3>{user.name}</h3>
-      <h3>{user.age}</h3>
+      <PageHeader title="Search" />
+      <p>search page</p>
     </div>
   );
 };
 
-export default Settings;
+export default Dashboard;

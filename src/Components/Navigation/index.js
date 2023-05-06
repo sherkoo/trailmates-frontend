@@ -1,15 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Navigation = ({ props }) => {
   return (
     <div>
-      <h2>Trailmates</h2>
       <nav>
         <ul>
-          <li>link</li>
-          <li>link</li>
-          <li>link</li>
-          <li>link</li>
+          <li><Link to="/">Newsfeed</Link></li>
+          <li><Link to="/search">Search</Link></li>
+          <li><Link to="/messages">Messages</Link></li>
+          <li><Link to="/events">Events</Link></li>
+          <li><Link to="/settings">Settings</Link></li>
         </ul>
       </nav>
     </div>
