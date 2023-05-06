@@ -5,6 +5,10 @@ import NotFound from "./Pages/NotFound";
 import Registration from "./Pages/Registration";
 import Dashboard from "./Pages/Dashboard";
 import { useSelector } from "react-redux";
+import Messages from "./Pages/Messages";
+import Search from "./Pages/Search";
+import Settings from "./Pages/Settings";
+import Newsfeed from "./Pages/Newsfeed";
 
 // protect routes
 const ProtectedRoute = ({ user, children }) => {
@@ -51,10 +55,32 @@ function App() {
             }
           />
           <Route
-            path="/dashboard"
+            path="/search"
             element={
               <ProtectedRoute>
-                <Dashboard />
+                <Dashboard>
+                  <Search />
+                </Dashboard>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <ProtectedRoute>
+                <Dashboard>
+                  <Settings />
+                </Dashboard>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/messages"
+            element={
+              <ProtectedRoute>
+                <Dashboard>
+                  <Messages />
+                </Dashboard>
               </ProtectedRoute>
             }
           />
@@ -63,7 +89,9 @@ function App() {
             path="/"
             element={
               <ProtectedRoute>
-                <Dashboard />
+                <Dashboard>
+                  <Newsfeed />
+                </Dashboard>
               </ProtectedRoute>
             }
           />
