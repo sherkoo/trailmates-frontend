@@ -2,11 +2,11 @@ import React from "react";
 import Header from "../../Components/Header";
 import Navigation from "../../Components/Navigation";
 
-const Dashboard = ({children}) => {
-
+const Dashboard = ({ children }) => {
   return (
     <div>
       <div>
+        <h2>title</h2>
         <Header />
         <Navigation />
       </div>
@@ -16,7 +16,7 @@ const Dashboard = ({children}) => {
 };
 
 Dashboard.defaultProps = {
-  children: "insert page here..."
-}
+  children: "insert page here...",
+};
 
 export default Dashboard;
