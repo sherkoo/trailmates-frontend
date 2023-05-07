@@ -1,6 +1,9 @@
 const vars = {
   messages: {
     login: "All fields required. Fill in the following fields:",
+    users: {
+      noUserFound: "No user found",
+    },
   },
   colors: {
     greens: {

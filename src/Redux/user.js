@@ -5,6 +5,7 @@ export const userSlice = createSlice({
   initialState: {
     loggedIn: true,
     userData: {
+      id: 1,
       name: "new name",
       age: 55,
       email: "name@email.com",
