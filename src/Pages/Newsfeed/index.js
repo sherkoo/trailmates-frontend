@@ -6,6 +6,8 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import { useSelector } from "react-redux";
+import { Provider } from "react-redux";
+import store from "../../Redux/store";
 
 const CardMediaContainer = ({ title, description, onClick, imgUrl }) => {
   return (
@@ -39,19 +41,22 @@ const Newsfeed = () => {
   const newsfeed = useSelector((state) => state.newsfeed);
 
   return (
-    <div>
-      <PageHeader title="Newsfeed" />
-      {newsfeed.map((n, index) => (
-        <div>
-          <CardMediaContainer
-            index={index}
-            title={n.title}
-            description={n.description}
-          />
-          <br />
-        </div>
-      ))}
-    </div>
+    <Provider store={store}>
+      <div>
+        <h2>Newsfeed</h2>
+        <PageHeader title="Newsfeed" />
+        {newsfeed.map((n, index) => (
+          <div>
+            <CardMediaContainer
+              index={index}
+              title={n.title}
+              description={n.description}
+            />
+            <br />
+          </div>
+        ))}
+      </div>
+    </Provider>
   );
 };
 
