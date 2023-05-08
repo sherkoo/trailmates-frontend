@@ -52,7 +52,7 @@ const Login = () => {
   if (!loggedIn) {
     return (
       <Provider store={store}>
-        <div>
+        <div data-testid="login-page">
           <Header />
           <h2>Login</h2>
           <Box component="form" noValidate autoComplete="off">

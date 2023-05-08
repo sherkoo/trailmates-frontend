@@ -1,15 +1,15 @@
-import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Login from "./Pages/Login";
-import NotFound from "./Pages/NotFound";
 import Registration from "./Pages/Registration";
 import Dashboard from "./Pages/Dashboard";
-import { useSelector } from "react-redux";
+import Newsfeed from "./Pages/Newsfeed";
 import Messages from "./Pages/Messages";
 import Search from "./Pages/Search";
 import Settings from "./Pages/Settings";
-import Newsfeed from "./Pages/Newsfeed";
 import Events from "./Pages/Events";
+import NotFound from "./Pages/NotFound";
+import "./App.css";
 
 // protect routes
 const ProtectedRoute = ({ user, children }) => {
