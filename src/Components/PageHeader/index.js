@@ -1,9 +1,10 @@
 import React from "react";
+import Typography from "@mui/material/Typography";
 
 const PageHeader = ({ title }) => {
   return (
     <div>
-      <h2>{title}</h2>
+      <Typography variant="h3">{title}</Typography>
     </div>
   );
 };

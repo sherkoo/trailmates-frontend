@@ -27,7 +27,7 @@ const LoggedInRoute = ({ user, children, page }) => {
   const loggedIn = useSelector((state) => state.user.loggedIn);
 
   if (loggedIn) {
-    return <Navigate to={"/dashboard"} replace />;
+    return <Navigate to={"/"} replace />;
   }
 
   return children;
