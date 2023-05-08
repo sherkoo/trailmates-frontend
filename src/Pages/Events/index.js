@@ -3,7 +3,7 @@ import PageHeader from "../../Components/PageHeader";
 
 const Events = () => {
   return (
-    <div>
+    <div data-testid="events">
       <PageHeader title="Events" />
       events page here
     </div>

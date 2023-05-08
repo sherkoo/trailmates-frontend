@@ -46,7 +46,7 @@ const Newsfeed = () => {
         <h2>Newsfeed</h2>
         <PageHeader title="Newsfeed" />
         {newsfeed.map((n, index) => (
-          <div>
+          <div key={index}>
             <CardMediaContainer
               index={index}
               title={n.title}
