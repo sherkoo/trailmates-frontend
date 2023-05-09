@@ -1,16 +1,39 @@
 import React from "react";
 import Header from "../../Components/Header";
 import Navigation from "../../Components/Navigation";
+import { Grid, Box } from "@mui/material";
+
+const LeftRail = ({ children }) => (
+  <Box
+    sx={{
+      backgroundColor: "#fafafa",
+      borderRight: "1px solid #eee",
+      height: "100vh",
+    }}
+  >
+    {children}
+  </Box>
+);
+
+const MainContent = ({ children }) => (
+  <Box sx={{ overflowY: "scroll", height: "100vh", padding: "1em" }}>
+    {children}
+  </Box>
+);
 
 const Dashboard = ({ children }) => {
   return (
-    <div>
-      <div>
-        <Header />
-        <Navigation />
-      </div>
-      <div>{children}</div>
-    </div>
+    <Grid container>
+      <Grid item xs={2}>
+        <LeftRail>
+          <Header />
+          <Navigation />
+        </LeftRail>
+      </Grid>
+      <Grid item xs={10}>
+        <MainContent>{children}</MainContent>
+      </Grid>
+    </Grid>
   );
 };
 

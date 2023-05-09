@@ -1,0 +1,35 @@
+.calendarDay {
+  /* background-color: #eee; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendarDaySpan{
+  height: 32px;
+  width: 32px;
+  border: 1px solid black;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendarDaySpan:hover{
+  cursor: pointer;
+  background-color: #eee;
+}
+
+.calendarDayContainer,
+.weekdayContainer {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-column-gap: .25em;
+  grid-row-gap: 1em;
+}
+
+.calendarContainer { 
+  max-width: 400px;
+  padding: 1em;
+  border: 1px solid black;
+}

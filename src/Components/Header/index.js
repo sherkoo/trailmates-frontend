@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Typography } from "@mui/material";
 
 const Header = ({ props }) => {
   return (
     <header>
-      <h2>
+      <Typography variant="h5">
         <Link to="/">TrailMates</Link>
-      </h2>
+      </Typography>
     </header>
   );
 };
