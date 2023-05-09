@@ -43,7 +43,6 @@ const Newsfeed = () => {
   return (
     <Provider store={store}>
       <div>
-        <h2>Newsfeed</h2>
         <PageHeader title="Newsfeed" />
         {newsfeed.map((n, index) => (
           <div key={index}>
