@@ -90,7 +90,7 @@ const Login = () => {
                     variant="outlined"
                   />
                 </div>
-                <div>
+                <Box sx={{ display: "flex", alignItems: "right" }}>
                   <Button
                     sx={{ textTransform: "none" }}
                     onClick={handleSubmit}
@@ -98,7 +98,7 @@ const Login = () => {
                   >
                     Login
                   </Button>
-                </div>
+                </Box>
                 <div>
                   Don't have an account? <Link to="/register">Register</Link>
                 </div>

@@ -1,19 +1,81 @@
 import React from "react";
+import Header from "../Header";
 import { Link } from "react-router-dom";
+import {
+  Grid,
+  Box,
+  Drawer,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  ListItemButton,
+} from "@mui/material";
+import { People } from "@mui/icons-material";
+import InboxIcon from "@mui/icons-material/Inbox";
+import NewspaperIcon from "@mui/icons-material/Newspaper";
+import SettingsIcon from "@mui/icons-material/Settings";
+import ForestIcon from "@mui/icons-material/Forest";
+import ChatIcon from "@mui/icons-material/Chat";
+import SearchIcon from "@mui/icons-material/Search";
+import Divider from "@mui/material/Divider";
+
+const ListItemComponent = ({ url, linkName, active, icon }) => {
+  return (
+    <ListItem disablePadding>
+      <ListItemButton to={url}>
+        <ListItemIcon>{icon}</ListItemIcon>
+        <ListItemText primary={linkName} />
+      </ListItemButton>
+    </ListItem>
+  );
+};
 
 const Navigation = ({ props }) => {
   return (
-    <div>
-      <nav>
-        <ul>
-          <li><Link to="/">Newsfeed</Link></li>
-          <li><Link to="/search">Search</Link></li>
-          <li><Link to="/messages">Messages</Link></li>
-          <li><Link to="/events">Events</Link></li>
-          <li><Link to="/settings">Settings</Link></li>
-        </ul>
-      </nav>
-    </div>
+    <nav>
+      <List>
+        <ListItem>
+          <Header />
+        </ListItem>
+      </List>
+      <List>
+        <ListItemComponent
+          url="/"
+          active
+          linkName="Newsfeed"
+          icon={<NewspaperIcon />}
+        />
+        <ListItemComponent
+          url="/search"
+          linkName="Search"
+          icon={<SearchIcon />}
+        />
+        <ListItemComponent
+          url="/messages"
+          linkName="Messages"
+          icon={<ChatIcon />}
+        />
+        <ListItemComponent
+          url="/events"
+          linkName="Events"
+          icon={<ForestIcon />}
+        />
+        <ListItemComponent
+          url="/settings"
+          linkName="Settings"
+          icon={<SettingsIcon />}
+        />
+      </List>
+      <Divider />
+      <List>
+        <ListItem disablePadding>
+          <ListItemButton to="/signout">
+            <ListItemText primary="Signout" />
+          </ListItemButton>
+        </ListItem>
+      </List>
+    </nav>
   );
 };
 

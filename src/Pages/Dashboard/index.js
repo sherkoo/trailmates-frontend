@@ -1,7 +1,16 @@
 import React from "react";
 import Header from "../../Components/Header";
 import Navigation from "../../Components/Navigation";
-import { Grid, Box } from "@mui/material";
+import {
+  Grid,
+  Box,
+  Drawer,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+import { People } from "@mui/icons-material";
 
 const LeftRail = ({ children }) => (
   <Box
@@ -26,7 +35,6 @@ const Dashboard = ({ children }) => {
     <Grid container>
       <Grid item xs={2}>
         <LeftRail>
-          <Header />
           <Navigation />
         </LeftRail>
       </Grid>

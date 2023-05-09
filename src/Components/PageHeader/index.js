@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 const PageHeader = ({ title }) => {
   return (
     <div>
-      <Typography variant="h4">{title}</Typography>
+      <Typography variant="h6">{title}</Typography>
     </div>
   );
 };
