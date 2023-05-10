@@ -66,6 +66,9 @@ const Login = () => {
 
   return (
     <Grid>
+      <Alert severity="info" sx={{ marginBottom: "1em" }}>
+        For testing purposes use email: email, and password: password to login
+      </Alert>
       <Box
         sx={{
           display: "flex",
@@ -106,7 +109,7 @@ const Login = () => {
                 </div>
                 <Box sx={{ display: "flex", alignItems: "right" }}>
                   <Button
-                    sx={{ textTransform: "none" }}
+                    sx={{ textTransform: "none", marginBottom: "1em" }}
                     onClick={handleSubmit}
                     variant="contained"
                   >

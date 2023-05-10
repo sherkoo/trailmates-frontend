@@ -6,6 +6,7 @@ import Alert from "@mui/material/Alert";
 import Helpers from "../../Components/Helpers";
 import vars from "../../Components/vars";
 import Header from "../../Components/Header";
+import { Grid, Box, Card } from "@mui/material";
 
 const Registration = () => {
   const [emailError, setEmailError] = useState(false);
@@ -18,8 +19,6 @@ const Registration = () => {
   const [password2Value, setPassword2Value] = useState("");
 
   const [onAlert, setAlert] = useState(false);
-
-  // const [loggedIn, setLoggedIn] = useState(false);
 
   const helper = new Helpers();
 
@@ -60,48 +59,68 @@ const Registration = () => {
   };
 
   return (
-    <div>
-      <Header />
-      <h2>Register</h2>
-      <div>{handleAlert()}</div>
-      <div>
-        <TextField
-          error={emailError}
-          onChange={(event) => setEmailValue(event.target.value)}
-          id="outlined-basic"
-          label="Email"
-          variant="outlined"
-        />
-      </div>
-      <div>
-        <TextField
-          error={password1Error}
-          type="password"
-          onChange={(event) => setPassword1Value(event.target.value)}
-          id="outlined-basic"
-          label="Password"
-          variant="outlined"
-        />
-      </div>
-      <div>
-        <TextField
-          type="password"
-          error={password2Error}
-          onChange={(event) => setPassword2Value(event.target.value)}
-          id="outlined-basic"
-          label="Repeat Password"
-          variant="outlined"
-        />
-      </div>
-      <div>
-        <Button onClick={handleSubmit} variant="contained">
-          Register
-        </Button>
-      </div>
-      <div>
-        Already have an account? <Link to="/login">Login</Link>
-      </div>
-    </div>
+    <Grid>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Card sx={{ padding: "1em", minWidth: "400px" }}>
+          <Header />
+          <h2>Register</h2>
+          <div>{handleAlert()}</div>
+          <div>
+            <TextField
+              fullWidth
+              sx={{ marginBottom: "1em" }}
+              error={emailError}
+              onChange={(event) => setEmailValue(event.target.value)}
+              id="outlined-basic"
+              label="Email"
+              variant="outlined"
+            />
+          </div>
+          <div>
+            <TextField
+              fullWidth
+              sx={{ marginBottom: "1em" }}
+              error={password1Error}
+              type="password"
+              onChange={(event) => setPassword1Value(event.target.value)}
+              id="outlined-basic"
+              label="Password"
+              variant="outlined"
+            />
+          </div>
+          <div>
+            <TextField
+              sx={{ marginBottom: "1em" }}
+              fullWidth
+              type="password"
+              error={password2Error}
+              onChange={(event) => setPassword2Value(event.target.value)}
+              id="outlined-basic"
+              label="Repeat Password"
+              variant="outlined"
+            />
+          </div>
+          <div>
+            <Button
+              sx={{ marginBottom: "1em" }}
+              onClick={handleSubmit}
+              variant="contained"
+            >
+              Register
+            </Button>
+          </div>
+          <div>
+            Already have an account? <Link to="/login">Login</Link>
+          </div>
+        </Card>
+      </Box>
+    </Grid>
   );
 };
 
