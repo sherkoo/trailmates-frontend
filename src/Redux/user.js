@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const userSlice = createSlice({
   name: "user",
   initialState: {
-    loggedIn: true,
+    loggedIn: localStorage.getItem("loggedIn") === "true" ? true : false,
     userData: {
       id: 1,
       name: "new name",
@@ -14,12 +14,15 @@ export const userSlice = createSlice({
   reducers: {
     login: (state, action) => {
       state.loggedIn = true;
-      state.value = action.payload;
+      localStorage.setItem("loggedIn", true);
+      // state.value = action.payload;
     },
     logout: (state, action) => {
       state.loggedIn = false;
+      localStorage.setItem("loggedIn", false);
     },
   },
 });
 
+export const { login, logout } = userSlice.actions;
 export default userSlice.reducer;

@@ -19,6 +19,8 @@ import ForestIcon from "@mui/icons-material/Forest";
 import ChatIcon from "@mui/icons-material/Chat";
 import SearchIcon from "@mui/icons-material/Search";
 import Divider from "@mui/material/Divider";
+import { logout } from "../../Redux/user";
+import { useDispatch } from "react-redux";
 
 const ListItemComponent = ({ url, linkName, active, icon }) => {
   return (
@@ -32,6 +34,12 @@ const ListItemComponent = ({ url, linkName, active, icon }) => {
 };
 
 const Navigation = ({ props }) => {
+  const dispatch = useDispatch();
+
+  const handleSignout = () => {
+    dispatch(logout());
+  };
+
   return (
     <nav>
       <List>
@@ -70,7 +78,7 @@ const Navigation = ({ props }) => {
       <Divider />
       <List>
         <ListItem disablePadding>
-          <ListItemButton to="/signout">
+          <ListItemButton onClick={() => handleSignout()} to="/">
             <ListItemText primary="Signout" />
           </ListItemButton>
         </ListItem>
