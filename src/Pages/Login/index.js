@@ -6,14 +6,16 @@ import Alert from "@mui/material/Alert";
 import { Link } from "react-router-dom";
 import Helpers from "../../Components/Helpers";
 import vars from "../../Components/vars";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Provider } from "react-redux";
 import store from "../../Redux/store";
 import { Grid, Box } from "@mui/material";
 import Card from "@mui/material/Card";
+import { login } from "../../Redux/user";
 
 const Login = () => {
   const userRedux = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
   const [emailError, setEmailError] = useState(false);
   const [emailValue, setEmailValue] = useState("");
@@ -33,8 +35,9 @@ const Login = () => {
     helper.checker(passwordValue === "", setPasswordError);
 
     if (emailValue && passwordValue) {
-      alert("Ready to login");
-      setLoggedIn(true);
+      // alert("Ready to login");
+      // setLoggedIn(true);
+      dispatch(login({ username: "user123", password: "password123" }));
     }
   };
 
