@@ -10,6 +10,7 @@ import Settings from "./Pages/Settings";
 import Events from "./Pages/Events";
 import NotFound from "./Pages/NotFound";
 import "./App.css";
+import SEO from "./Components/SEO";
 
 // protect routes
 const ProtectedRoute = ({ user, children }) => {
@@ -43,6 +44,7 @@ function App() {
             path={"/login"}
             element={
               <LoggedInRoute>
+                <SEO title="Login" />
                 <Login />
               </LoggedInRoute>
             }
@@ -60,6 +62,8 @@ function App() {
             element={
               <ProtectedRoute>
                 <Dashboard>
+                  <SEO title="Search" />
+
                   <Search />
                 </Dashboard>
               </ProtectedRoute>
@@ -70,6 +74,8 @@ function App() {
             element={
               <ProtectedRoute>
                 <Dashboard>
+                  <SEO title="Settings" />
+
                   <Settings />
                 </Dashboard>
               </ProtectedRoute>
@@ -80,6 +86,8 @@ function App() {
             element={
               <ProtectedRoute>
                 <Dashboard>
+                  <SEO title="Messages" />
+
                   <Messages />
                 </Dashboard>
               </ProtectedRoute>
@@ -90,6 +98,8 @@ function App() {
             element={
               <ProtectedRoute>
                 <Dashboard>
+                  <SEO title="Events" />
+
                   <Events />
                 </Dashboard>
               </ProtectedRoute>
@@ -101,6 +111,7 @@ function App() {
             element={
               <ProtectedRoute>
                 <Dashboard>
+                  <SEO title="Newsfeed" />
                   <Newsfeed />
                 </Dashboard>
               </ProtectedRoute>
