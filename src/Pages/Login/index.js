@@ -24,6 +24,7 @@ const Login = () => {
   const [passwordValue, setPasswordValue] = useState("");
 
   const [onAlert, setAlert] = useState(false);
+  const [wrongEmailPassword, setWrongEmailPassword] = useState(false);
 
   const [loggedIn, setLoggedIn] = useState(false);
 
@@ -35,9 +36,11 @@ const Login = () => {
     helper.checker(passwordValue === "", setPasswordError);
 
     if (emailValue && passwordValue) {
-      // alert("Ready to login");
-      // setLoggedIn(true);
-      dispatch(login({ username: "user123", password: "password123" }));
+      dispatch(login({ email: emailValue, password: passwordValue }));
+
+      if (userRedux.errorMessage) {
+        setWrongEmailPassword(true);
+      }
     }
   };
 
@@ -45,9 +48,17 @@ const Login = () => {
     if (onAlert) {
       return (
         <Alert severity="error" sx={{ marginBottom: "1em" }}>
-          {vars.messages.login}
+          {vars.messages.login.required}
           {emailError ? <li>Email</li> : null}
           {passwordError ? <li>Password</li> : null}
+        </Alert>
+      );
+    }
+
+    if (wrongEmailPassword) {
+      return (
+        <Alert severity="error" sx={{ marginBottom: "1em" }}>
+          {vars.messages.login.wrong}
         </Alert>
       );
     }
@@ -58,7 +69,7 @@ const Login = () => {
       <Box
         sx={{
           display: "flex",
-          alignItems: "cetner",
+          alignItems: "center",
           justifyContent: "center",
         }}
       >
