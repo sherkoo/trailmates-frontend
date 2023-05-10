@@ -4,6 +4,7 @@ export const userSlice = createSlice({
   name: "user",
   initialState: {
     loggedIn: localStorage.getItem("loggedIn") === "true" ? true : false,
+    errorMessage: "",
     userData: {
       id: 1,
       name: "new name",
@@ -13,9 +14,17 @@ export const userSlice = createSlice({
   },
   reducers: {
     login: (state, action) => {
-      state.loggedIn = true;
-      localStorage.setItem("loggedIn", true);
-      // state.value = action.payload;
+      if (
+        //TODO: mock data for now - needs logic
+        action.payload.email === "email" &&
+        action.payload.password === "password"
+      ) {
+        state.loggedIn = true;
+        localStorage.setItem("loggedIn", true);
+      } else {
+        state.loggedIn = false;
+        state.errorMessage = "Wrong username or password";
+      }
     },
     logout: (state, action) => {
       state.loggedIn = false;
