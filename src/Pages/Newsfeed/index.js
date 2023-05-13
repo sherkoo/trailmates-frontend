@@ -8,6 +8,7 @@ import { Button, CardActionArea, CardActions } from "@mui/material";
 import { useSelector } from "react-redux";
 import { Provider } from "react-redux";
 import store from "../../Redux/store";
+import { Grid } from "@mui/material";
 
 const CardMediaContainer = ({ title, description, onClick, imgUrl }) => {
   return (
@@ -44,16 +45,17 @@ const Newsfeed = () => {
     <Provider store={store}>
       <div>
         <PageHeader title="Newsfeed" />
-        {newsfeed.map((n, index) => (
-          <div key={index}>
-            <CardMediaContainer
-              index={index}
-              title={n.title}
-              description={n.description}
-            />
-            <br />
-          </div>
-        ))}
+        <Grid container spacing={2}>
+          {newsfeed.map((n, index) => (
+            <Grid key={index} item xs={12} sm={6} md={6}>
+              <CardMediaContainer
+                index={index}
+                title={n.title}
+                description={n.description}
+              />
+            </Grid>
+          ))}
+        </Grid>
       </div>
     </Provider>
   );
