@@ -7,16 +7,28 @@ import Helpers from "../../Components/Helpers";
 import vars from "../../Components/vars";
 import Header from "../../Components/Header";
 import { Grid, Box, Card } from "@mui/material";
+import { useSelector, useDispatch } from "react-redux";
+import { registration } from "../../Redux/user";
 
 const Registration = () => {
+  const dispatch = useDispatch();
+
+  const userRedux = useSelector((state) => state.user);
+
   const [emailError, setEmailError] = useState(false);
   const [emailValue, setEmailValue] = useState("");
+
+  const [alertMessage, setAlertMessage] = useState(
+    vars.messages.login.required
+  );
 
   const [password1Error, setPassword1Error] = useState(false);
   const [password1Value, setPassword1Value] = useState("");
 
   const [password2Error, setPassword2Error] = useState(false);
   const [password2Value, setPassword2Value] = useState("");
+
+  const [wrongEmailPassword, setWrongEmailPassword] = useState(false);
 
   const [onAlert, setAlert] = useState(false);
 
@@ -31,8 +43,11 @@ const Registration = () => {
       emailValue === "" || password1Value === "" || password2Value === "",
       setAlert
     );
+
     helper.checker(emailValue === "", setEmailError);
+
     helper.checker(password1Value === "", setPassword1Error);
+
     helper.checker(password2Value === "", setPassword2Error);
 
     if (emailValue && password1Value && password2Value) {
@@ -42,20 +57,37 @@ const Registration = () => {
         password2: password2Value,
       };
       console.log(credentials);
-      // setLoggedIn(true);
+
+      if (emailValue.includes("@") && emailValue.includes(".com")) {
+        dispatch(registration());
+      } else {
+        setAlert(true);
+        setEmailError(true);
+        setAlertMessage(vars.messages.login.validEmail);
+      }
+
+      // if (userRedux.errorMessage) {
+      //   setWrongEmailPassword(true);
+      // }
     }
   };
 
   const handleAlert = () => {
     if (onAlert) {
       return (
-        <Alert severity="error">
-          {vars.messages.login}
-          {emailError ? <li>Email</li> : null}
-          {password1Error || password2Error ? <li>Password</li> : null}
+        <Alert severity="error" sx={{ marginBottom: "1em" }}>
+          {alertMessage}
         </Alert>
       );
     }
+
+    // if (wrongEmailPassword) {
+    //   return (
+    //     <Alert severity="error" sx={{ marginBottom: "1em" }}>
+    //       {vars.messages.login.wrong}
+    //     </Alert>
+    //   );
+    // }
   };
 
   return (
