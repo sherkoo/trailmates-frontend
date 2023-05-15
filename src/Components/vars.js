@@ -3,6 +3,7 @@ const vars = {
     login: {
       required: "All fields required. Fill in the following fields:",
       wrong: "Wrong username or password.",
+      validEmail: "Please enter a valid email.",
     },
     users: {
       noUserFound: "No user found",

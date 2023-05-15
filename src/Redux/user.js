@@ -26,6 +26,9 @@ export const userSlice = createSlice({
         state.errorMessage = "Wrong username or password";
       }
     },
+    registration: (state, action) => {
+      state.loggedIn = true;
+    },
     logout: (state, action) => {
       state.loggedIn = false;
       localStorage.setItem("loggedIn", false);
@@ -33,5 +36,5 @@ export const userSlice = createSlice({
   },
 });
 
-export const { login, logout } = userSlice.actions;
+export const { login, logout, registration } = userSlice.actions;
 export default userSlice.reducer;

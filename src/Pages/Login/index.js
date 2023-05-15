@@ -32,7 +32,9 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     helper.checker(emailValue === "" || passwordValue === "", setAlert);
+
     helper.checker(emailValue === "", setEmailError);
+
     helper.checker(passwordValue === "", setPasswordError);
 
     if (emailValue && passwordValue) {
@@ -110,8 +112,8 @@ const Login = () => {
                 <Box sx={{ display: "flex", alignItems: "right" }}>
                   <Button
                     sx={{ textTransform: "none", marginBottom: "1em" }}
-                    onClick={handleSubmit}
                     variant="contained"
+                    onClick={handleSubmit}
                   >
                     Login
                   </Button>
