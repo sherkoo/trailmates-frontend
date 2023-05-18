@@ -16,7 +16,12 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Unstable_Grid2";
-import { eventFilterChange, eventFilterTypeChange } from "../../Redux/events";
+import {
+  eventFilterChange,
+  eventFilterTypeChange,
+  resetFilters,
+} from "../../Redux/events";
+import vars from "../../Components/vars";
 
 // Event Card
 const EventCard = ({ title, date, description, type }) => {
@@ -70,7 +75,10 @@ const EventsFilters = () => {
         <Grid xs={3}>
           <InputLabel id="demo-simple-select-label">Month</InputLabel>
           <Select fullWidth value={eventsState.eventFilterDate.month}>
-            <MenuItem value={0} onClick={() => handleEventFilterChange(0)}>
+            <MenuItem
+              value={"All"}
+              onClick={() => handleEventFilterChange("All")}
+            >
               All
             </MenuItem>
             <MenuItem value={1} onClick={() => handleEventFilterChange(1)}>
@@ -127,29 +135,41 @@ const Events = () => {
   const dispatch = useDispatch();
 
   const filteredEvents = events.eventsData.filter((e) => {
-    if (events.eventFilterDate.type === "All") {
-      return (
-        e.date.getDate() === events.eventFilterDate.month ||
-        events.eventFilterDate.month === 0
-      );
+    if (events.eventFilterDate.month === "All") {
+      return e.date.getDate();
     } else {
-      return (
-        (e.date.getDate() === events.eventFilterDate.month &&
-          e.type === events.eventFilterDate.type) ||
-        events.eventFilterDate.month === 0
-      );
+      return e.date.getDate() === events.eventFilterDate.month;
     }
   });
+
+  const filteredEventsByType = events.eventsData.filter((e) => {
+    if (events.eventFilterDate.type === "All") {
+      return e.type;
+    } else {
+      return e.type === events.eventFilterDate.type;
+    }
+  });
+
+  const finalFilteredEvents = filteredEvents.filter((e) =>
+    filteredEventsByType.includes(e)
+  );
+
+  const handleResetFilters = () => {
+    dispatch(resetFilters());
+  };
 
   return (
     <div data-testid="events">
       <EventsFilters />
       <PageHeader title="Events" />
       {/* <Calendar /> */}
-      {filteredEvents.length === 0 ? (
-        <h2>No results found</h2>
+      {finalFilteredEvents.length === 0 ? (
+        <div>
+          <h2>{vars.messages.noResultsFound}</h2>
+          <Button onClick={handleResetFilters}>Reset Filters</Button>
+        </div>
       ) : (
-        filteredEvents.map((e, index) => (
+        finalFilteredEvents.map((e, index) => (
           <EventCard
             key={index}
             title={e.title}

@@ -5,7 +5,7 @@ const eventSlice = createSlice({
   initialState: {
     eventTypes: ["Hiking", "Trails", "Biking"],
     eventFilterDate: {
-      month: 0,
+      month: "All",
       type: "All",
     },
     eventsData: [
@@ -48,8 +48,13 @@ const eventSlice = createSlice({
     eventFilterTypeChange: (state, action) => {
       state.eventFilterDate.type = action.payload;
     },
+    resetFilters: (state, action) => {
+      state.eventFilterDate.month = "All";
+      state.eventFilterDate.type = "All";
+    },
   },
 });
 
-export const { eventFilterChange, eventFilterTypeChange } = eventSlice.actions;
+export const { eventFilterChange, eventFilterTypeChange, resetFilters } =
+  eventSlice.actions;
 export default eventSlice.reducer;

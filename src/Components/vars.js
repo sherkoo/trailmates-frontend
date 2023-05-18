@@ -8,6 +8,7 @@ const vars = {
     users: {
       noUserFound: "No user found",
     },
+    noResultsFound: "No results found",
   },
   colors: {
     greens: {
